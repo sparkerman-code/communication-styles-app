@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Communication Styles</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- Progress text -->
+      <p id="progress-text" style="margin-bottom: 5px;">0% complete</p>
+
+      <!-- Progress bar container -->
+      <div id="progress-container" style="background: #eee; height: 10px; width: 100%; margin-bottom: 15px;">
+        <div id="progress-bar" style="height: 100%; width: 0%; background: #007bff;"></div>
+      </div>
+
+      <!-- Question counter -->
+      <h2 id="question-counter"></h2>
+
+      <!-- Option buttons -->
+      <button id="option-a"></button>
+      <button id="option-b"></button>
+    </div>
+
+    <!-- Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Chart.js Data Labels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+
+    <!-- Your app code -->
+    <script src="app.js"></script>
+  </body>
+</html>
