@@ -94,31 +94,27 @@ function showPreScoring() {
   const app = document.getElementById("app");
 
   app.innerHTML = `
-  <h2>Select the 5 statements that describe you best</h2>
-  <p>You have selected <span id="selected-count">0</span> of 5</p>
-  <div id="statements" style="
-      max-height: 400px; 
-      overflow-y: auto; 
-      border: 1px solid #ccc; 
-      padding: 10px;
-      margin-bottom: 10px;
-  "></div>
-  <button id="continue-btn" disabled>Continue</button>
-`;
-
+    <h2>Select the 4 statements that describe you best</h2>
+    <p>You have selected <span id="selected-count">0</span> of 4</p>
+    <div id="statements" style="
+        max-height: 400px; 
+        overflow-y: auto; 
+        border: 1px solid #ccc; 
+        padding: 10px;
+        margin-bottom: 10px;
+    "></div>
+    <button id="continue-btn" disabled>Continue</button>
+  `;
 
   const statementsDiv = document.getElementById("statements");
 
   selectedResponses.forEach((response, index) => {
     const button = document.createElement("button");
     button.textContent = response.text;
-
     button.onclick = () => toggleHighlight(index, button);
-
     statementsDiv.appendChild(button);
   });
 
-  // ATTACH CLICK HANDLER TO CONTINUE BUTTON
   const continueBtn = document.getElementById("continue-btn");
   continueBtn.onclick = () => {
     applyBonusPoints();
@@ -126,16 +122,12 @@ function showPreScoring() {
   };
 }
 
-
 function toggleHighlight(index, button) {
   const response = selectedResponses[index];
+  const highlightedCount = selectedResponses.filter(r => r.isHighlighted).length;
 
-  const highlightedCount = selectedResponses.filter(
-    r => r.isHighlighted
-  ).length;
-
-  if (!response.isHighlighted && highlightedCount >= 5) {
-    alert("You can only select 5 statements.");
+  if (!response.isHighlighted && highlightedCount >= 4) { // change 5 → 4
+    alert("You can only select 4 statements.");
     return;
   }
 
@@ -143,10 +135,10 @@ function toggleHighlight(index, button) {
   button.classList.toggle("highlighted");
 
   const count = selectedResponses.filter(r => r.isHighlighted).length;
-
   document.getElementById("selected-count").textContent = count;
-  document.getElementById("continue-btn").disabled = count !== 5;
+  document.getElementById("continue-btn").disabled = count !== 4; // change 5 → 4
 }
+
 
 function applyBonusPoints() {
   selectedResponses.forEach(response => {
